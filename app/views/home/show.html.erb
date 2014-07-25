@@ -1,0 +1,14 @@
+<h1><%= @application["contractor_name"] %></h1>
+<table border=0 class="table">
+ <% @application.each do |key , value| %>	
+   <tr>
+   	  <td class="col_<%= @value %>">
+   	    <b> <%= "#{key}" %></b>
+   	  </td>
+   	  <td class="col_<%= @value %>">
+   	     <%= "#{value}".html_safe %>
+   	  </td>
+   </tr>
+   
+ <%end%>
+</table>
