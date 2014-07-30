@@ -1,0 +1,9 @@
+%h1= @application["contractor_name"]
+%table.table{:border => "0"}
+  - @application.each do |key , value|
+    %tr
+      %td{:class => "col_#{@value}"}
+        %b
+          = "#{key}"
+      %td{:class => "col_#{@value}"}
+        = "#{value}".html_safe

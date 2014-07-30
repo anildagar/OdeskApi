@@ -1,0 +1,26 @@
+%h1 
+  Apllications List
+- if @applications.present?
+  %table#my-table.table{:border => "0", :style => "border-collapse:collapse"}
+    %thead
+      %tr
+        - @applications.each do |key , value|
+          - if key == "skills" || key == "category" || key == "created_time" || key == "title" || key == "reference" || key == " num_candidates"
+            %th
+              = key.capitalize
+    %tr
+      - @applications.each do |key , value|
+        - if key == "skills" || key == "category" || key == "created_time" || key == "title" || key == "reference" || key == " num_candidates"
+          %td
+            - if key == 'reference'
+              = link_to "#{value}" , home_show_application_path(:job_key => value)
+            - else
+              = value
+:javascript
+  $(function() {   
+    $(".filter").change(function(){
+      var col_id = $(this).attr("id");
+       $("#my-table td.col_"+col_id+":contains('" + $(this).val() + "')").parent().show();
+       $("#my-table td.col_"+col_id+":not(:contains('" + $(this).val() + "'))").parent().hide();
+    }); 
+  });

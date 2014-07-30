@@ -1,0 +1,38 @@
+%h1 
+  Applicants List
+- if @applicaiton.present?
+  %table#my-table.table{:border => "0", :style => "border-collapse:collapse"}
+    %thead
+      %tr
+        - val = 0
+        - @applicaiton.first.each do |key , value|
+          - if key == "rid" || key == "job_type" || key == "contractor_name" || key == "contractor_title" || key == "created_type"
+            %th
+              %input.filter{:id => val, :placeholder => "Filter ", :type => "text"}/
+              - val=val+1
+      %tr
+        - @applicaiton.first.each do |key , value|
+          - if key == "rid" || key == "job_type" || key == "contractor_name" || key == "contractor_title" || key == "created_type"
+            %th
+              = key.capitalize
+    %tbody
+      - @applicaiton.each do |key , value|
+        %tr
+          - @value=0
+          - key.each do |k,v|
+            - if k == "rid" || k == "job_type" || k == "contractor_name" || k == "contractor_title" || k == "created_type"
+              %td{:class => "col_#{@value}"}
+                - if k == "rid"
+                  = link_to "#{v}" , home_show_path(:app => v)
+                - else
+                  = "#{v}".html_safe
+                - @value=@value+1
+:javascript
+  $(function() {   
+  	$(".filter").change(function(){
+  		var col_id = $(this).attr("id");
+  		 $("#my-table td.col_"+col_id+":contains('" + $(this).val() + "')").parent().show();
+       $("#my-table td.col_"+col_id+":not(:contains('" + $(this).val() + "'))").parent().hide();
+    }); 
+  });
+ 

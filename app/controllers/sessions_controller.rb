@@ -1,13 +1,13 @@
 class SessionsController < ApplicationController
 
   def create
-   # binding.pry
+  
     user = User.from_omniauth(env["omniauth.auth"])
-   
-    session[:user_id] = user.id 
-    $data = env["omniauth.auth"].extra.access_token
-    #binding.pry
-    redirect_to root_url
+    if user.present?
+      session[:user_id] = user.id 
+      $data = env["omniauth.auth"].extra.access_token
+    end
+    redirect_to root_path
 
   end
 
