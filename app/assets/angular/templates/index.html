@@ -1,0 +1,45 @@
+<h1>
+  Apllications List
+</h1>
+<div ng-controller = "data_controller">
+  <table id="my-table" class="table" border = "0" style = "border-collapse:collapse">
+    <thead>
+      <tr>
+        <td>
+          skills
+        </td>
+        <td>
+          category
+        </td>
+        <td>
+          created_time
+        </td>
+        <td>
+          title
+        </td>
+        <td>
+          reference
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+        <!-- <tr><td>{{stocks}}}</td></tr> -->
+      <tr data-ng-repeat = "value in stocks">
+        <td>{{value.skills}}</td>
+        <td>{{value.category}}</td>
+        <td>{{value.created_time}}</td>
+        <td>{{value.title}}</td>
+        <td>
+          <a href =  "#/AllDataController/show/{{value.reference}}" >{{value.reference}}</a>
+        </td>
+      </tr>
+    </tbody>
+</table>
+</div>
+<script>/*<![CDATA[*/$(function() {   
+  $(".filter").change(function(){
+    var col_id = $(this).attr("id");
+     $("#my-table td.col_"+col_id+":contains('" + $(this).val() + "')").parent().show();
+     $("#my-table td.col_"+col_id+":not(:contains('" + $(this).val() + "'))").parent().hide();
+  }); 
+});/*]]>*/</script>

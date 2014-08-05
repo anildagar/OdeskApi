@@ -1,6 +1,8 @@
-%html
+%html{"ng-app" => "OdeskLogin"}
   %head
     %title OdeskLogin
+    %script{:src => "//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"}
+    %script{:src => "//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"}
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = stylesheet_link_tag    'bootstrap'
@@ -33,7 +35,11 @@
       / Main jumbotron for a primary marketing message or call to action
       .jumbotron
         .container
+          .navbar.navbar-static-top
+            #loading
+              %b Loading...
       .container
+        %div{"ng-view" => "ng-view"}
         / Example row of columns
         .row
           = yield
@@ -41,3 +47,4 @@
           %footer
             %p &copy; Company 2014
       / /container
+ 

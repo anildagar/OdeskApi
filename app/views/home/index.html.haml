@@ -1,21 +1,30 @@
 %h1 
   Apllications List
-- if @applications.present?
+%div{"ng-controller" => "AllDataController"}
   %table#my-table.table{:border => "0", :style => "border-collapse:collapse"}
     %thead
       %tr
-        - @applications.each do |key , value|
-          - if key == "skills" || key == "category" || key == "created_time" || key == "title" || key == "reference" || key == " num_candidates"
-            %th
-              = key.capitalize
-    %tr
-      - @applications.each do |key , value|
-        - if key == "skills" || key == "category" || key == "created_time" || key == "title" || key == "reference" || key == " num_candidates"
-          %td
-            - if key == 'reference'
-              = link_to "#{value}" , home_show_application_path(:job_key => value)
-            - else
-              = value
+        %td 
+          skills
+        %td
+          category
+        %td     
+          created_time
+        %td
+          title
+        %td 
+          reference
+    %tbody
+      {{stocks}}
+      %tr{"data-ng-repeat" => "value in stocks"}
+        %td {{value.skills}}
+        %td {{value.category}}
+        %td {{value.created_time}}
+        %td {{value.title}}
+        %td 
+          %a{:href => "", "ng-click" => "deleteStock(value.reference, $index)"} {{value.reference}}
+  
+
 :javascript
   $(function() {   
     $(".filter").change(function(){

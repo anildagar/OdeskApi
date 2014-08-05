@@ -1,0 +1,19 @@
+<a href back-button><div class="btn btn-warning">back</div></a>
+
+<div ng-controller = "contractorControler">
+	<div data-ng-repeat = "v in stocks">
+<h1> {{ v.contractor_name }}</h1>
+</div>
+   <table id="my-table" class="table" border = "0" style = "border-collapse:collapse">
+    
+    <tbody data-ng-repeat = "stk in stocks">
+        <!-- <tr><td>{{stocks}}}</td></tr> -->
+
+      <tr data-ng-repeat = "(k,v) in stk">
+        <th> {{k}} </th>
+        <td> {{v}}</td>
+        
+      </tr>
+    </tbody>
+</table>
+</div>

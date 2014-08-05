@@ -1,0 +1,43 @@
+App.factory('Stock', ['$resource', function($resource) {
+  function Stock() {
+    this.service = $resource('/home', {id: '@id'});
+  };
+  Stock.prototype.all = function() {
+    return this.service.query();
+  };
+  // Stock.prototype.delete = function(stId) {
+  //   this.service =  this.service.get({job_key: stId});
+  //    //$resource('/home/destroy', {job_key: stId});
+  //    //console.log( this.service );
+  // };
+  return new Stock;
+}]);
+
+App.factory('Applicant', ['$resource', '$routeParams' ,  function($resource , $routeParams) {
+   function Applicant() {
+    console.log($routeParams.id);
+     this.service = $resource('/home/show_application/:id', {id: $routeParams.id} );
+   };
+  Applicant.prototype.all = function() {
+    
+    return this.service.query();
+  };
+ 
+   return new Applicant;
+}]);
+
+
+App.factory('Contractor', ['$resource',  '$routeParams' , function($resource , $routeParams) {
+   function Contractor() {
+    console.log($routeParams.id);
+     this.service = $resource('/home/:id', {id: $routeParams.id} );
+   };
+  Contractor.prototype.all = function() {
+    
+    return this.service.query();
+  };
+ 
+   return new Contractor;
+}]);
+
+

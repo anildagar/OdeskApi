@@ -1,16 +1,21 @@
 Rails.application.routes.draw do
-  get 'sessions/create'
+  # get 'sessions/create'
 
-  get 'sessions/destroy'
+  # get 'sessions/destroy'
 
-  root 'home#index'
+  # get 'home/index' 
 
-  get 'home/show'
-  get 'home/show_application'
+  # get 'home/all_app' 
 
-  get 'home/new'
+  # get 'home/show' , defaults: {format: :json}
 
-  get 'home/create'
+  resources :home , defaults: {format: :json}
+  root to: 'application#index'
+  get 'home/show_application/:id'  => 'home#show_application' , defaults: {format: :json}
+
+  # get 'home/new'
+
+  # get 'home/create'
 
   get '/auth/odesk/callback', to: 'sessions#create', via: [:get, :post]
 

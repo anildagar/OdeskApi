@@ -1,0 +1,52 @@
+<a href back-button><div class="btn btn-warning">back</div></a>
+<h1>Applicants List</h1>
+<div ng-controller = "AllDataController">
+  <table id="my-table" class="table" border = "0" style = "border-collapse:collapse">
+    <thead>
+      <tr>
+        <td>
+          Rid
+        </td>
+        <td>
+          job_type
+        </td>
+        <td>
+          contractor_name
+        </td>
+        <td>
+          contractor_title
+        </td>
+        <td>
+          created_type
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+        <!-- <tr><td>{{stocks}}}</td></tr> -->
+      <tr data-ng-repeat = "value in stocks">
+        <td>
+          <a href =  "#/company/{{value.rid}}" >{{value.rid}}</a>
+        </td>
+        <td>{{value.job_type}}</td>
+        <td>{{value.contractor_name}}</td>
+        <td>{{value.contractor_title}}</td>
+        <td>{{value.created_type}} </td>
+      </tr>
+    </tbody>
+</table>
+</div>
+
+<script>
+
+
+  
+  $(function() {   
+    $(".filter").change(function(){
+        var col_id = $(this).attr("id");
+         $("#my-table td.col_"+col_id+":contains('" + $(this).val() + "')").parent().show();
+       $("#my-table td.col_"+col_id+":not(:contains('" + $(this).val() + "'))").parent().hide();
+    }); 
+  });
+ 
+
+</script>

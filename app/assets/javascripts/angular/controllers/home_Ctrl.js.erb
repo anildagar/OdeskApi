@@ -1,0 +1,56 @@
+window.App = angular.module('OdeskLogin', ['ngResource', 'OdeskLogin.loading'])
+
+
+ App.controller("AllDataController", ['$scope', '$location','Applicant', '$routeParams', function($scope,$location, Applicant, $routeParams){
+    // $scope.data = Show_app.all();
+     //$scope.stocks = Applicant.get({id: $routeParams.id});
+     $scope.stocks = Applicant.all();
+   }]);
+
+
+ App.controller("contractorControler", ['$scope', '$location','Contractor', '$routeParams', function($scope,$location, Contractor, $routeParams){
+    // $scope.data = Show_app.all();
+     //$scope.stocks = Applicant.get({id: $routeParams.id});
+     //$scope.stocks = Contractor.get({id: $routeParams.id});
+     $scope.stocks = Contractor.all({id: 1});
+
+   }]);
+
+
+
+
+App.controller("data_controller",['$scope','$location', 'Stock',  '$routeParams', function($scope, $location, Stock, $routeParams){
+    $scope.stocks = Stock.all({id: $routeParams.id});
+
+     $scope.deleteStock = function(id, idx) {
+      $location.path('/AllDataController/show/:id');
+    };
+}]);
+
+
+
+
+App.controller('AppCtrl', ['$scope', function($scope) {
+  $scope.$back = function() { 
+    window.history.back();
+  };
+}]);
+
+
+
+ App.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
+    $routeProvider.when('/',{
+        controller: "data_controller",
+        templateUrl: '<%= asset_path('templates/index.html') %>'
+    })
+    .when('/AllDataController/show/:id',{
+       controller: "AllDataController",
+        templateUrl: '<%= asset_path('templates/show.html') %>'
+        
+    })
+    .when('/company/:id',{
+       controller: "contractorControler",
+        templateUrl: '<%= asset_path('templates/contractor.html') %>'
+        
+    });
+ }]);
