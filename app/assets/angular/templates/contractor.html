@@ -10,7 +10,7 @@
         <!-- <tr><td>{{stocks}}}</td></tr> -->
 
       <tr data-ng-repeat = "(k,v) in stk">
-        <th> {{k}} </th>
+        <th style="text-transform: capitalize;"> {{k.replace('_',' ') }} </th>
         <td> {{v}}</td>
         
       </tr>

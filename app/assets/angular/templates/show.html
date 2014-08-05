@@ -1,29 +1,41 @@
 <a href back-button><div class="btn btn-warning">back</div></a>
 <h1>Applicants List</h1>
-<div ng-controller = "AllDataController">
+<div ng-controller = "AllDataController ">
   <table id="my-table" class="table" border = "0" style = "border-collapse:collapse">
     <thead>
       <tr>
+        <td> <input ng-model="search.rid" placeholder="Filter By RID"></td>
+        <td> <input ng-model="search.job_type" placeholder="Filter By Job Type"></td>
+        <td> <input ng-model="search.contractor_name" placeholder="Filter By Name"></td>
+        <td>  <input ng-model="search.contractor_title" placeholder="Filter By Title"></td>
+        <td> <input ng-model="search.created_type" placeholder="Filter Created Type"></td>
+      </tr>
+      <tr>
         <td>
+        
           Rid
         </td>
         <td>
-          job_type
+         
+          Job Type
         </td>
         <td>
-          contractor_name
+          
+          Contractor Name
         </td>
         <td>
-          contractor_title
+          
+          Contractor Title
         </td>
         <td>
-          created_type
+           
+          Created At
         </td>
       </tr>
     </thead>
     <tbody>
         <!-- <tr><td>{{stocks}}}</td></tr> -->
-      <tr data-ng-repeat = "value in stocks">
+      <tr data-ng-repeat = "value in stocks | filter:search:strict">
         <td>
           <a href =  "#/company/{{value.rid}}" >{{value.rid}}</a>
         </td>
