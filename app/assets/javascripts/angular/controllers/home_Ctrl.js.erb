@@ -37,6 +37,13 @@ App.controller('AppCtrl', ['$scope', function($scope) {
 }]);
 
 
+App.filter('nl2br', function(){
+      return function(text) {
+           return text.replace(/_/g, ' ');
+      };
+});
+
+
 
  App.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
     $routeProvider.when('/',{

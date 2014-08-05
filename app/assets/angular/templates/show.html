@@ -12,23 +12,18 @@
       </tr>
       <tr>
         <td>
-        
           Rid
         </td>
         <td>
-         
           Job Type
         </td>
         <td>
-          
           Contractor Name
         </td>
         <td>
-          
           Contractor Title
         </td>
         <td>
-           
           Created At
         </td>
       </tr>
@@ -44,6 +39,7 @@
         <td>{{value.contractor_title}}</td>
         <td>{{value.created_type}} </td>
       </tr>
+       <tr ng-hide="stocks.length"><td style="color:#ff8888;">No Application Found</td></tr>
     </tbody>
 </table>
 </div>

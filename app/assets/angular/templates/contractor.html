@@ -6,14 +6,49 @@
 </div>
    <table id="my-table" class="table" border = "0" style = "border-collapse:collapse">
     
-    <tbody data-ng-repeat = "stk in stocks">
-        <!-- <tr><td>{{stocks}}}</td></tr> -->
+    <tbody data-ng-repeat = "stk in stocks  ">
+        <!-- <tr><td>{{stk}}}</td></tr> -->
+        <tr> <td width="30%"> Rid </td><td>{{stk.rid}} <td></tr>
+        <tr> <td> Job Type </td><td>{{stk.job_type}} <td></tr>
+        <tr> <td> Contractor Ref </td><td>{{stk.contractor_ref}} <td></tr>
+        <tr> <td> Contractor Name </td><td>{{stk.contractor_name}} <td></tr>
+        <tr> <td> Contractor Title </td><td>{{stk.contractor_title}} <td></tr>
+        <tr> <td> FeedBack Score </td><td>{{stk.feedback_score}} <td></tr>
+        <tr> <td> Total Hours </td><td>{{stk.total_hours}} <td></tr>
+        <tr> <td> Cover Letter </td><td>{{stk.cover_letter}} <td></tr>
+        <tr> <td> Job Pref Matches </td><td>{{stk.job_pref_matches}} <td></tr>
+        <tr> <td> Created Type </td><td>{{stk.created_type}} <td></tr>
+        <tr> <td> Invite Letter </td><td>{{stk.invite_letter}} <td></tr>
+        <tr> <td> Is Shortlisted </td><td>{{stk.is_shortlisted}} <td></tr>
+        <tr> <td width="30%"> Is Hidded BY Buyer </td><td>{{stk.is_hidden_by_buyer}} <td></tr>
+        <tr> <td> Is Undecided </td><td>{{stk.is_undecided}} <td></tr>
+        <tr> <td> Status </td><td>{{stk.status}} <td></tr>
+        <tr> <td> Interview Status </td><td>{{stk.interview_status}} <td></tr>
+        <tr> <td> Is Hidden by Provider </td><td>{{stk.is_hidden_by_provider}} <td></tr>
+        <tr> <td> Offer Status </td><td>{{stk.offer_status}} <td></tr>
+        <tr> <td> Hr Pay Rate </td><td>{{stk.hr_pay_rate}} <td></tr>
+        <tr> <td> Hr Charge Rate </td><td>{{stk.hr_charge_rate}} <td></tr>
+        <tr> <td> Fp Pay Amount </td><td>{{stk.fp_pay_amount}} <td></tr>
+        <tr> <td> Fp UpFront Payment </td><td>{{stk.fp_upfront_payment}} <td></tr>
+        <tr> <td> Is Seen By Buyer </td><td>{{stk.is_seen_by_buyer}} <td></tr>
+        <tr> <td> Fp Amount Agreed </td><td>{{stk.fp_amount_agreed}} <td></tr>
+        <tr> <td> Team Nid </td><td>{{stk.team_nid}} <td></tr>
+        <tr> <td> Engagement Duration Ref </td><td>{{stk.engagement_duration_ref}} <td></tr>
+        <tr> <td> Ui Opening Title </td><td>{{stk.ui_opening_title}} <td></tr>
+        <tr> <td> Is Auto Hidden </td><td>{{stk.is_auto_hidden}} <td></tr>
+        <tr> <td> Ctime Epoch </td><td>{{stk.ctime_epoch}} <td></tr>
+        <tr> <td> Contractor Portrait Url </td><td>{{stk.contractor_portrait_url}} <td></tr>
+        <tr> <td> Job Description </td><td>{{stk.job__description}} <td></tr>
+        <tr> <td> Contractor Ciphertext </td><td>{{stk.contractor_ciphertext}} <td></tr>
+        <tr> <td> Rent Percent </td><td>{{stk.rent_percent}} <td></tr>
 
-      <tr data-ng-repeat = "(k,v) in stk">
+
+
+     <!--  <tr data-ng-repeat = "(k,v) in stk  ">
         <th style="text-transform: capitalize;"> {{k.replace('_',' ') }} </th>
         <td> {{v}}</td>
         
-      </tr>
+      </tr> -->
     </tbody>
 </table>
 </div>
