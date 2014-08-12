@@ -36,10 +36,12 @@
       .jumbotron
         .container
           .navbar.navbar-static-top
-            #loading
-              %b Loading...
+            - if current_user
+              #loading
+                %b Loading...
       .container
-        %div{"ng-view" => "ng-view"}
+        - if current_user
+          %div{"ng-view" => "ng-view"}
         / Example row of columns
         .row
           = yield

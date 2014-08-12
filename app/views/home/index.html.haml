@@ -1,28 +1,29 @@
-%h1 
-  Apllications List
-%div{"ng-controller" => "AllDataController"}
-  %table#my-table.table{:border => "0", :style => "border-collapse:collapse"}
-    %thead
-      %tr
-        %td 
-          skills
-        %td
-          category
-        %td     
-          created_time
-        %td
-          title
-        %td 
-          reference
-    %tbody
-      {{stocks}}
-      %tr{"data-ng-repeat" => "value in stocks"}
-        %td {{value.skills}}
-        %td {{value.category}}
-        %td {{value.created_time}}
-        %td {{value.title}}
-        %td 
-          %a{:href => "", "ng-click" => "deleteStock(value.reference, $index)"} {{value.reference}}
+- if current_user
+  %h1 
+    Apllications List
+  %div{"ng-controller" => "AllDataController"}
+    %table#my-table.table{:border => "0", :style => "border-collapse:collapse"}
+      %thead
+        %tr
+          %td 
+            skills
+          %td
+            category
+          %td     
+            created_time
+          %td
+            title
+          %td 
+            reference
+      %tbody
+        {{stocks}}
+        %tr{"data-ng-repeat" => "value in stocks"}
+          %td {{value.skills}}
+          %td {{value.category}}
+          %td {{value.created_time}}
+          %td {{value.title}}
+          %td 
+            %a{:href => "", "ng-click" => "deleteStock(value.reference, $index)"} {{value.reference}}
   
 
 :javascript
