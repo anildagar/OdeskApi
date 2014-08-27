@@ -1,47 +1,89 @@
 <a href back-button><div class="btn btn-warning">back</div></a>
 <h1>Applicants List</h1>
 <div ng-controller = "AllDataController ">
-  <table id="my-table" class="table" border = "0" style = "border-collapse:collapse">
-    <thead>
-      <tr>
-        <td> <input ng-model="search.rid" placeholder="Filter By RID"></td>
-        <td> <input ng-model="search.job_type" placeholder="Filter By Job Type"></td>
-        <td> <input ng-model="search.contractor_name" placeholder="Filter By Name"></td>
-        <td>  <input ng-model="search.contractor_title" placeholder="Filter By Title"></td>
-        <td> <input ng-model="search.created_type" placeholder="Filter Created Type"></td>
-      </tr>
-      <tr>
-        <td>
-          Rid
-        </td>
-        <td>
-          Job Type
-        </td>
-        <td>
-          Contractor Name
-        </td>
-        <td>
-          Contractor Title
-        </td>
-        <td>
-          Created At
-        </td>
-      </tr>
-    </thead>
-    <tbody>
+        <div id="accordion" class="panel-group">
+        <div class="panel panel-default" data-ng-repeat = "(key, values) in stocks.0">
+          <div class="panel-heading">
+
+            <h4 class="panel-title">
+              <a data-parent = "#accordion" data-toggle = "collapse" href = "#{{$index}}">
+              Testing {{key}}
+              </a>
+            </h4>
+          </div>
+          <div id="{{$index}}" class="panel-collapse collapse in">
+            <div class="panel-body" >
+              <table id="my-table" class="table" border = "0" style = "border-collapse:collapse">
+                <thead>
+                  <tr>
+                    <td> <input ng-model="search.rid" placeholder="Filter By RID"></td>
+                    <td> <input ng-model="search.job_type" placeholder="Filter By Job Type"></td>
+                    <td> <input ng-model="search.contractor_name" placeholder="Filter By Name"></td>
+                    <td>  <input ng-model="search.contractor_title" placeholder="Filter By Title"></td>
+                    <td> <input ng-model="search.created_type" placeholder="Filter Created Type"></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-ng-repeat = "val in values" >
+                    <td>{{val.rid}}</td>
+                    <td>{{val.job_type}}</td>
+                    <td>{{val.contractor_name}}</td>
+                    <td>{{val.contractor_title}}</td>
+                    <td>{{val.created_type}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+        </div>
+   
+<!--         <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-parent = "#accordion" data-toggle = "collapse" href = "#collapseTwo">
+                Group Item #2</a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-parent = "#accordion", data-toggle = "collapse" href = "#collapseThree">
+                Group Item #3</a>
+            </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse">
+            <div class="panel-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div> -->
+      </div>
+
         <!-- <tr><td>{{stocks}}}</td></tr> -->
-      <tr data-ng-repeat = "value in stocks | filter:search:strict">
-        <td>
-          <a href =  "#/company/{{value.rid}}" >{{value.rid}}</a>
-        </td>
-        <td>{{value.job_type}}</td>
-        <td>{{value.contractor_name}}</td>
-        <td>{{value.contractor_title}}</td>
-        <td>{{value.created_type}} </td>
-      </tr>
+     <!-- <div data-ng-repeat = "values in stocks | filter:search:strict">  -->
+        <tr>
+          <td>
+            <a href =  "#/company/{{value.rid}}" >{{value.0}}</a>
+          </td>
+          <td>{{value.1}}</td>
+          <td>{{value.2}}</td>
+          <td>{{value.3}}</td>
+          <td>{{value.4}} </td>
+          <td>{{value.5}}</td>
+          <td>{{value.6}} </td>
+        </tr>
+      <!-- </div> -->
        <tr ng-hide="stocks.length"><td style="color:#ff8888;">No Application Found</td></tr>
     </tbody>
 </table>
+
 </div>
 
 <script>
