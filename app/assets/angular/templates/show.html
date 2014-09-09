@@ -14,21 +14,32 @@
           <div id="{{$index}}" class="panel-collapse collapse in">
             <div class="panel-body" >
               <table id="my-table" class="table" border = "0" style = "border-collapse:collapse">
-                <thead>
+               <!--  <thead>
                   <tr>
                     <td> <input ng-model="search.rid" placeholder="Filter By RID"></td>
                     <td> <input ng-model="search.job_type" placeholder="Filter By Job Type"></td>
                     <td> <input ng-model="search.contractor_name" placeholder="Filter By Name"></td>
                     <td>  <input ng-model="search.contractor_title" placeholder="Filter By Title"></td>
                     <td> <input ng-model="search.created_type" placeholder="Filter Created Type"></td>
-                  </tr>
-                </thead>
+                    
+                  </tr> -->
+                <!-- </thead> -->
                 <tbody>
+
+                  <tr>
+                    <td>
+
+                       <div ng-switch on="values.length"> 
+                        <div ng-switch-when="0" >Record Not Found :(</div>
+                       </div>
+
+                    </td>
+                  </tr>
                   <tr data-ng-repeat = "val in values" >
                     <td>{{val.rid}}</td>
                     <td>{{val.job_type}}</td>
                     <td>{{val.contractor_name}}</td>
-                    <td>{{val.contractor_title}}</td>
+                    <td>{{val.contractor_title | limitTo:15}}</td>
                     <td>{{val.created_type}}</td>
                   </tr>
                 </tbody>

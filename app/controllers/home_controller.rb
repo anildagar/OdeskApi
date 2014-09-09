@@ -27,12 +27,12 @@ class HomeController < ApplicationController
       #    @grp_data[status[i]] = $data.get('/api/hr/v3/clients/applications.json?job_key='+params[:id]+'&buyer_team__reference='+company_reference).read_body
       # end
 
-     #  @grp_data["hidden"] = $data.get('/api/hr/v3/clients/applications.json?job_key='+params[:id]+'&buyer_team__reference='+company_reference+'&status=hidden').read_body
-     #  @grp_data["shortlisted"] = $data.get('/api/hr/v3/clients/applications.json?job_key='+params[:id]+'&buyer_team__reference='+company_reference+'&status=shortlisted').read_body
-     #  @grp_data["messaged"] = $data.get('/api/hr/v3/clients/applications.json?job_key='+params[:id]+'&buyer_team__reference='+company_reference+'&status=messaged').read_body
-     #  @grp_data["hired"] = $data.get('/api/hr/v3/clients/applications.json?job_key='+params[:id]+'&buyer_team__reference='+company_reference+'&status=hired').read_body
-     #  @grp_data["declined"] = $data.get('/api/hr/v3/clients/applications.json?job_key='+params[:id]+'&buyer_team__reference='+company_reference+'&status=declined').read_body
-     #  @grp_data["offered"] = $data.get('/api/hr/v3/clients/applications.json?job_key='+params[:id]+'&buyer_team__reference='+company_reference+'&status=offered').read_body
+       @grp_data["hidden"] = $data.get('/api/hr/v3/clients/applications.json?job_key='+params[:id]+'&buyer_team__reference='+company_reference+'&status=hidden').read_body
+       @grp_data["shortlisted"] = $data.get('/api/hr/v3/clients/applications.json?job_key='+params[:id]+'&buyer_team__reference='+company_reference+'&status=shortlisted').read_body
+       @grp_data["messaged"] = $data.get('/api/hr/v3/clients/applications.json?job_key='+params[:id]+'&buyer_team__reference='+company_reference+'&status=messaged').read_body
+       @grp_data["hired"] = $data.get('/api/hr/v3/clients/applications.json?job_key='+params[:id]+'&buyer_team__reference='+company_reference+'&status=hired').read_body
+       @grp_data["declined"] = $data.get('/api/hr/v3/clients/applications.json?job_key='+params[:id]+'&buyer_team__reference='+company_reference+'&status=declined').read_body
+       @grp_data["offered"] = $data.get('/api/hr/v3/clients/applications.json?job_key='+params[:id]+'&buyer_team__reference='+company_reference+'&status=offered').read_body
 
 
     end
@@ -40,32 +40,32 @@ class HomeController < ApplicationController
 
     if @data.present?
       @applicaiton = get_hash(@data)["applications"]
-      # for i in (0..(status.length))
-      #   if i==6
-      #     @grp_data["all"] = @applicaiton
-      #   else
-      #    @grp_data[status[i]] = get_hash(@grp_data[status[i]])["applications"]
-      #   end 
-      # end
-
-      @myar1 = []
-       @applicaiton.each do |key|
-         if key["is_shortlisted"]=="1"
-          h = {}
-          h = key
-          @myar1 << h
-         end
-       end
-       @grp_data["shortlisted"] = @myar1
+      for i in (0..(status.length))
+        if i==6
+          @grp_data["all"] = @applicaiton
+        else
+         @grp_data[status[i]] = get_hash(@grp_data[status[i]])["applications"]
+        end 
+      end
+    # binding.pry
+      # @myar1 = []
+      #  @applicaiton.each do |key|
+      #    if key["is_shortlisted"]=="1"
+      #     h = {}
+      #     h = key
+      #     @myar1 << h
+      #    end
+      #  end
+      #  @grp_data["shortlisted"] = @myar1
        @grp_data["all"] = @applicaiton
 
 
-      binding.pry
+      #binding.pry
        ar = []
        ar << @grp_data
        respond_with(ar)
     else
-    
+      #binding.pry
       respond_with(User.all)
     end
   end
