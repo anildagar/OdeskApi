@@ -1,3 +1,140 @@
+<style type="text/css">
+.top_list
+{
+  height:100px;
+  width:100%;
+  background:red;
+  display: inline;
+}
+.first_top_list_item
+{
+  height:50px;
+  border-radius: 25px;
+  padding:5px;
+  border: 1px solid #cccccc;
+  background: #ffffff;
+  text-align: center;
+}
+.hired_img
+{
+  height: 100px;
+  width : 100px;
+  padding:5px;
+  padding-right: 10px;
+  border-radius: 5px;
+  float: left;
+}
+img
+{
+  border-radius: 5px;
+   height: 80px;
+  width : 80px;
+}
+.applicant_name
+{
+  color:#0093f0;
+  padding-right: 10px;
+  float:left;
+}
+.applicant_title
+{
+  color:#cccccc;
+  padding-top:0px;
+}
+.apllicant_detail
+{
+  padding-top: 15px;
+}
+.table .table tr td {
+ border:none;
+}
+</style>
+
+<!-- data-ng= "(key, values) in stocks.0"> -->
+
+<div class="row" >
+  <div class="col-xs-6 col-md-4">
+<div class="first_top_list_item"><b>{{ stocks.0.hidden.length }} </b>Suggetions </div>
+  </div>
+  <div class="col-xs-6 col-md-4">
+    <div class="first_top_list_item"><b>{{ stocks.0.all.length }} </b>Applicants</div>
+  </div>
+  <div class="col-xs-6 col-md-4">
+    <div class="first_top_list_item"><b>{{ stocks.0.hired.length }} </b>Hired</div>
+  </div>
+</div>
+
+
+<div class="row">
+  <table class="table" border = "0" style = "border-collapse:collapse;margin-top:20px;">
+    <tr data-ng-repeat="list in stocks.0.hidden">
+      <td>
+
+      <table class="table borderless" >
+          <tbody>
+
+            <tbody><tr>
+            <td rowspan="4" style="width: 10%;">
+              <div class="hired_img">
+                <img src ="{{list.contractor_portrait_url}}">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+               <div class="applicant_name">{{list.contractor_name}}</div> 
+            </td>
+            <td colspan="4">
+              <div class="applicant_title"> {{list.contractor_title}} </div>
+            </td>
+            <td rowspan="4">
+              first
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 10%;">
+              <b>${{list.hr_pay_rate}}</b>/hrs
+            </td>
+            <td>
+              <b>{{list.total_hours}}</b>/hours workd 
+            </td>
+            <td>
+              {{list.feedback_score}}
+              <input id="input-id" type="number" class="rating" min=1 max=10 step=2 data-size="lg" data-rtl="true">
+            </td><td>
+              first
+            </td>
+            <td>
+              second
+            </td>
+            
+          </tr>
+          <tr>
+            <td colspan="5">
+              first
+            </td>
+          </tr>   
+        </tbody>
+          
+        </tbody></table>
+
+       <!-- <div class="hired_img">
+        <img src ="{{list.contractor_portrait_url}}">
+       </div>
+       <div>
+         <div class="applicant_name">{{list.contractor_name}}</div> 
+         <div class="applicant_title"> {{list.contractor_title}} </div>
+       </div>
+       <div class="apllicant_detail">
+         <b>${{list.hr_pay_rate}}</b>/hrs <b>{{list.total_hours}}</b>/hours workd {{list.contractor_name}} {{list.contractor_name}}
+      </div> -->
+      </td>
+    </tr> 
+   
+  </table>
+</div>
+
+
 <a href back-button><div class="btn btn-warning">back</div></a>
 <h1>Applicants List</h1>
 <div ng-controller = "AllDataController ">
@@ -7,7 +144,7 @@
 
             <h4 class="panel-title">
               <a data-parent = "#accordion" data-toggle = "collapse" href = "#{{$index}}">
-              Testing {{key}}
+              {{key | uppercase }}
               </a>
             </h4>
           </div>
@@ -26,10 +163,10 @@
                 <!-- </thead> -->
                 <tbody>
 
-                  <tr>
+                  <tr ng-switch on="values.length">
                     <td>
 
-                       <div ng-switch on="values.length"> 
+                       <div > 
                         <div ng-switch-when="0" >Record Not Found :(</div>
                        </div>
 
